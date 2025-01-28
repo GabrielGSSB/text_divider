@@ -1,119 +1,165 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .container {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 90%;
-    max-width: 500px;
-    text-align: center;
-  }
-  
-  h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  textarea, input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  textarea {
-    height: 100px;
-    resize: none;
-  }
-  
-  button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  .result-container {
-    margin-top: 20px;
-    text-align: left;
-  }
-  
-  .result-block {
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  
-  .result-header {
-    background-color: #f1f1f1;
-    padding: 10px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .result-content {
-    padding: 10px;
-    display: none;
-    white-space: pre-wrap;
-    background-color: #ffffff;
-    border-top: 1px solid #ccc;
-  }
-  
-  .result-header:hover {
-    background-color: #e0e0e0;
-  }
-  
-  .result-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
-  .result-buttons button {
-    padding: 5px 10px;
-    font-size: 14px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .result-buttons button.copy-btn {
-    background-color: #28a745;
-    color: white;
-  }
-  
-  .result-buttons button.copy-btn:hover {
-    background-color: #218838;
-  }
-  
-  .result-buttons button.hide-btn {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  .result-buttons button.hide-btn:hover {
-    background-color: #c82333;
-  }
-  
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #7eb7ff, #1d3e8a);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.95);
+  width: 90%;
+  max-width: 700px;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+p {
+  text-align: center;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.input-section {
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 100%;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.options label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.options input {
+  flex: 1;
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  display: inline-block;
+  background-color: #2f54eb; /* Azul padrão */
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+button:hover {
+  background-color: #1d3e8a;
+}
+
+/* Resultado */
+.results {
+  margin-top: 20px;
+}
+
+.results h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Container de cada bloco */
+.chunk-container {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px; /* espaço entre blocos */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.upper-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Texto do chunk */
+.chunk-text {
+  font-family: monospace;
+  white-space: pre-wrap;
+  /* Inicialmente, vamos limitar a exibição a 4 linhas (~5.2em, considerando ~1.3em por linha) */
+  max-height: 5.2em; 
+  line-height: 1.3;
+  overflow: hidden; /* esconde o texto extra */
+  margin-bottom: 0.5em;
+}
+
+/* Classe que expande o texto */
+.chunk-text.expanded {
+  max-height: none; /* remove o limite */
+  overflow: visible; 
+}
+
+/* Botão de copiar dentro de cada bloco */
+.copy-button {
+  background-color: #2f54eb;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.copy-button:hover {
+  background-color: #1d3e8a;
+}
+
+/* Botão após copiar: verde */
+.copy-button.copied {
+  background-color: #4CAF50; 
+  color: #fff;
+}
+
+/* Botão para expandir/contrair texto */
+.expand-button {
+  background: none;
+  border: none;
+  color: #2f54eb;
+  cursor: pointer;
+  padding: 0;
+  font-weight: bold;
+  align-self: flex-start; /* fica no canto esquerdo, mas pode ajustar como quiser */
+}
+
+.expand-button:hover {
+  text-decoration: underline;
+}
