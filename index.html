@@ -1,19 +1,43 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Divisor de Texto</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>Divisor de Texto</h1>
-    <textarea id="text-input" placeholder="Insira aqui todo o texto"></textarea>
-    <input type="number" id="char-limit" placeholder="Quantidade de caracteres" />
-    <button id="divide-button">Dividir Texto</button>
-    <div id="result-container" class="result-container"></div>
+    <p>Insira o texto e defina quantos caracteres deseja em cada parte.  
+       A divisão não quebrará palavras ou frases no meio, se possível.</p>
+    
+    <div class="input-section">
+      <textarea 
+        id="text-input" 
+        rows="6" 
+        placeholder="Cole ou digite o texto aqui"
+      ></textarea>
+    </div>
+    
+    <div class="options">
+      <label for="delimiter">Quantidade de caracteres (máximo desejado):</label>
+      <input 
+        type="number" 
+        id="delimiter" 
+        placeholder="Ex: 50"
+      />
+    </div>
+    
+    <button id="split-button">Dividir</button>
+    
+    <div class="results">
+      <h2>Resultado:</h2>
+      <!-- Aqui serão criadas as divs de cada bloco de texto -->
+      <div id="result-container"></div>
+    </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
